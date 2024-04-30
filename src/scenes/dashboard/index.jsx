@@ -4,7 +4,7 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import CryptoList from "../../data/CryptoList";
 import  { DataGrid } from "@mui/x-data-grid";
-import { useEffect } from "react";
+
 
 import { useNavigate } from 'react-router-dom';
 
@@ -16,17 +16,7 @@ const Dashboard = () => {
 
    
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 600);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    
 
     const columns = [
         {field: "id", headerName: "ID", flex: 1},
