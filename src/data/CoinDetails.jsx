@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Box,  useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import useMediaQuery from "@mui/material/useMediaQuery";
+
 import CoinChart from './CoinChart';
 
 
@@ -12,7 +12,7 @@ const CoinDetails = ({ match }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+    
     const [coinData, setCoinData] = useState(null);
     const { id: coinId } = useParams();
 

@@ -4,17 +4,17 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import CryptoList from "../../data/CryptoList";
 import  { DataGrid } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { useEffect } from "react";
+
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const matches = useMediaQuery(theme.breakpoints.down("sm"));
+    
     const navigate = useNavigate();
 
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
+   
 
     useEffect(() => {
         const handleResize = () => {
