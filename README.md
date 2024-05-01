@@ -1,10 +1,43 @@
-# Getting Started with Create React App
+# CRYPTO DASHBOARD
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This dashboard shows a list of cryptocurrencies.
 
-## Available Scripts
+![crypto_dashboard](public/assets/crypto_dashboard.png)
 
-In the project directory, you can run:
+From the list of cryptocurrencies, a user can select a coin to get more details on the coin.
+
+![crypto_dashboard](public/assets/crypto_details.png)
+
+There is a search feature that allows users to search for a specific coin
+
+![crypto_dashboard](public/assets/crypto_search.png)
+
+There is a FAQ page providing information on frequently asked questions
+
+![crypto_dashboard](public/assets/crypto_faq.png)
+
+There is a sign up form with validation that customizes the dashboard after signing up
+
+![crypto_dashboard](public/assets/crypto_form.png)
+
+Before running this project ensure that the following packages are installed:
+
+```
+npm i @mui/material @emotion/react @emotion/styled @mui/x-data-grid @mui/icons-material react-router-dom@6 react-pro-sidebar formik yup 
+```
+
+```
+npm install --save apexcharts react-apexcharts
+```
+
+```
+npm install axios
+```
+
+Make sure that the package versions dont conflict each other or else the application might not run. You can check the package.json file to see the version I used.
+
+After the set up is complete you can run the project:
+
 
 ### `npm start`
 
@@ -24,47 +57,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Dahboard site
+I deployed the crypto_dashboard using Netlify. Feel free to sample it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## [https://jolly-concha-fcbe72.netlify.app/]
