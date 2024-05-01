@@ -26,7 +26,7 @@ const Topbar = () => {
         setSearchInput(event.target.value);
       };
       const handleSearchSubmit = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' || event.type === 'click') {
             navigate('/search');
         }
       };
@@ -45,7 +45,7 @@ const Topbar = () => {
             onChange={handleSearchChange}
             onKeyPress={handleSearchSubmit}
             />
-            <IconButton type="button" sx={{p:1}}>
+            <IconButton type="button" sx={{p:1}} onClick={handleSearchSubmit}>
             <SearchIcon />
             </IconButton>
             
