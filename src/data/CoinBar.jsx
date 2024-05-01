@@ -8,7 +8,6 @@ import { useMediaQuery } from '@mui/material';
 const CoinBar = ({ data }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    // This will be true if the screen width is less than 600px
     const isSmallScreen = useMediaQuery('(max-width:600px)');
     const legendWidth = window.innerWidth < 600 ? 50 : 80;
 
@@ -16,31 +15,31 @@ const CoinBar = ({ data }) => {
     chart: {
       type: 'bar',
       theme: {
-        mode: 'dark', // Add this
+        mode: 'dark', 
       },
-      width: isSmallScreen ? "400px" : "500px", // Set width to 100% on small screens
-      height: isSmallScreen ? "300px" : "300px", // Adjust height on small screens
+      width: isSmallScreen ? "400px" : "500px", 
+      height: isSmallScreen ? "300px" : "300px", 
     },
     title: {
       text: 'Coin Market Cap Rank',
       style: {
-        color: '#ffffff', // Add this
+        color: '#ffffff', 
       },
       
     },
     tooltip: {
         fillSeriesColor: false,
-        theme: 'dark' // Change the tooltip theme to 'dark' for better visibility
+        theme: 'dark' 
     },
     dataLabels: {
-        enabled: false // Add this
+        enabled: false 
       },
 
     xaxis: {
       categories: data.coins.map(coin => coin.name),
       labels: {
         style: {
-            colors: colors.greenAccent[500] // Change the color of the y-axis labels here
+            colors: colors.greenAccent[500] 
         }
     }
     },
@@ -48,16 +47,16 @@ const CoinBar = ({ data }) => {
         opposite: true,
         labels: {
             style: {
-                colors: colors.greenAccent[500] // Change the color of the y-axis labels here
+                colors: colors.greenAccent[500] 
             }
         }
     },
 
     responsive: [{
-      breakpoint: 600, // breakpoint at 600px
+      breakpoint: 600, 
       options: {
           chart: {
-              width: "100%", // set width to 100% on small screens
+              width: "100%", 
               height: "180%"
           },
           legend: {
@@ -70,7 +69,7 @@ const CoinBar = ({ data }) => {
           },
           plotOptions: {
               bar: {
-                  horizontal: false, // switch to vertical bars on small screens
+                  horizontal: false, 
               },
           },
       },

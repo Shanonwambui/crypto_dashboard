@@ -7,21 +7,14 @@ import  { DataGrid } from "@mui/x-data-grid";
 import { CircularProgress } from '@mui/material';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useEffect, useState } from 'react';
-
-
 import { useNavigate } from 'react-router-dom';
-
-
 
 const Dashboard = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const matches = useMediaQuery(theme.breakpoints.down("sm"));
     const navigate = useNavigate();
-
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
-
-
     
     useEffect(() => {
         const handleResize = () => {
@@ -34,12 +27,6 @@ const Dashboard = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-  
-    
-   
-
-    
 
     const columns = [
         {field: "id", headerName: "ID", flex: 1},

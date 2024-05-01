@@ -10,14 +10,8 @@ const CoinChart = ({ coinId }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const isSmallScreen = useMediaQuery('(max-width:600px)');
-
+    const legendWidth = window.innerWidth < 600 ? 50 : 80;
    
-
-     // Adjust legend and margin based on screen size
-     const legendWidth = window.innerWidth < 600 ? 50 : 80;
-   
-
-
     useEffect(() => {
         const options = {
             method: 'GET',
@@ -40,18 +34,18 @@ const CoinChart = ({ coinId }) => {
     const options = {
         chart: {
             type: 'line',
-            width: "100%" , // Set width to 100% on small screens
-            height: isSmallScreen ? "200px" : "300px", // Adjust height on small screens
+            width: "100%" ,
+            height: isSmallScreen ? "200px" : "300px", 
             toolbar: {
-                offsetY: -10, // Add a 10px margin between the toolbar and the chart
+                offsetY: -10, 
             }
         },
         stroke: {
-            width: 2 // Adjust the thickness of the line here
+            width: 2 
         },
         tooltip: {
             fillSeriesColor: false,
-            theme: 'dark' // Change the tooltip theme to 'dark' for better visibility
+            theme: 'dark' 
         },
         series: [{
             name: 'Price',
@@ -61,7 +55,7 @@ const CoinChart = ({ coinId }) => {
             type: 'datetime',
             labels: {
                 style: {
-                    colors: colors.greenAccent[500] // Change the color of the x-axis labels here
+                    colors: colors.greenAccent[500] 
                 }
             }
         },
@@ -69,7 +63,7 @@ const CoinChart = ({ coinId }) => {
             opposite: true,
             labels: {
                 style: {
-                    colors: colors.greenAccent[500] // Change the color of the y-axis labels here
+                    colors: colors.greenAccent[500] 
                 },
                 formatter: function (value) {
                     return value.toFixed(2); // limit to two decimal places
@@ -79,13 +73,13 @@ const CoinChart = ({ coinId }) => {
         },
 
         responsive: [{
-            breakpoint: 600, // breakpoint at 600px
+            breakpoint: 600, 
             options: {
                 chart: {
-                    width: "100%", // set width to 100% on small screens
+                    width: "100%",
                 },
                 legend: {
-                    position: 'bottom', // move legend to bottom on small screens
+                    position: 'bottom', 
                     width: legendWidth,
                 },
                 grid: {

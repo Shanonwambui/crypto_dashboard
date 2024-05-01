@@ -14,7 +14,6 @@ const CoinDetails = ({ match }) => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    
     const [coinData, setCoinData] = useState(null);
     const { id: coinId } = useParams();
     const isSmallScreen = useMediaQuery('(max-width:600px)');
@@ -53,10 +52,10 @@ const CoinDetails = ({ match }) => {
                 <Box
                 sx={{
                   gridColumn: {
-                    xs: 'span 12', // On extra small (xs) screens, span 12 columns
-                    sm: 'span 12',  // On small (sm) screens, span 6 columns
-                    md: 'span 12',  // On medium (md) screens, span 4 columns
-                    lg: 'span 12',  // On large (lg) screens, span 3 columns
+                    xs: 'span 12', 
+                    sm: 'span 12',  
+                    md: 'span 12',  
+                    lg: 'span 12',  
                   },
                   backgroundColor: colors.primary[400],
                   display: 'inline',
@@ -70,8 +69,6 @@ const CoinDetails = ({ match }) => {
                     lg: '75vh', // On large (lg) screens, set height to 75vh
                 },
                   width: "100%"
-                  
-                  
                 }}
                 >
                     
@@ -95,7 +92,7 @@ const CoinDetails = ({ match }) => {
                     </Box>
 
                     <Box  sx={{
-                        width: isSmallScreen ? '100%' : '500px', // Set width to 100% on small screens
+                        width: isSmallScreen ? '100%' : '500px', // Adjust width to 100% on small screens
                         height: isSmallScreen ? '200px' : '300px', // Adjust height on small screens
                         marginLeft: isSmallScreen ? '0px' : isMediumScreen ? '50px' : '250px' // Adjust margin on small screens
                     }} alignItems="center" justifyContent="center" >

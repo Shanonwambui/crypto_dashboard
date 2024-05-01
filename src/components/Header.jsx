@@ -7,8 +7,6 @@ const Header = ({title, subtitle}) => {
     const colors = tokens(theme.palette.mode);
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-
-
     return (
         <Box mb="30px">
             <Typography 

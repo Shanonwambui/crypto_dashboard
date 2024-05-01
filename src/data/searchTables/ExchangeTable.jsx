@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 const ExchangeTable = ({ data }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
 

@@ -8,11 +8,8 @@ import {Box, IconButton, Typography, useTheme} from '@mui/material';
 import {Link} from "react-router-dom";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-
 import HelpOutlinedIcon from "@mui/icons-material/HelpOutlined";
-
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -44,33 +41,27 @@ const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    
     const { user } = useContext(UserContext);
 
     useEffect(() => {
         setIsCollapsed(isMobile);
       }, [isMobile]);
 
-
-    
     return (
         <Box sx={{
             "& .pro-sidebar-inner": {
                 background: `${colors.primary[400]} !important`,
                 width: isCollapsed ? (isMobile ? '50px' : '80px') : 'auto',
                 
-                
-                
               },
             "& .pro-icon-wrapper": {
                 backgroundColor: "transparent !important",
                
-                
             },
             "& .pro-inner-item": {
                 
                 padding: isCollapsed ? (isMobile ?  "5px 35px 5px 10px !important" :"5px 35px 5px 20px !important" ): 'auto',
-                marginRight: isMobile && isMobile ? '10px' : '0', // Adjusted margin for collapsed sidebar on small screens
+                marginRight: isMobile && isMobile ? '10px' : '0', 
             },
             "& .pro-inner-item:hover": {
                 color: "#868dfb !important"
@@ -79,15 +70,12 @@ const Sidebar = () => {
                 color: "#6870fa !important"
             },
             
-            position: isMobile ? 'fixed' : 'relative', // Add this line
-            zIndex: isMobile ? 1000 : 'auto', // Add this line
+            position: isMobile ? 'fixed' : 'relative', 
+            zIndex: isMobile ? 1000 : 'auto', 
             height: isMobile ? '100%' : '100vh',
-           
-            
-            
+                   
 }}>
             
-    
             <ProSidebar collapsed={isCollapsed}>
                 <Menu iconShape="square">
                     {/* LOGO AND MENU ICON */}
@@ -149,9 +137,6 @@ const Sidebar = () => {
                             setSelected={setSelected}
                         />
                         
-                        
-                        
-                        
                         <Typography
                             variant="h6"
                             color={colors.grey[300]}
@@ -174,9 +159,6 @@ const Sidebar = () => {
                             selected= {selected}
                             setSelected={setSelected}
                         />
-                       
-                       
-                        
 
                     </Box>
 

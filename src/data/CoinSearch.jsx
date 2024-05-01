@@ -13,7 +13,6 @@ import { useMediaQuery } from '@mui/material';
 const CoinSearch = () => {
  const theme = useTheme();
  const colors = tokens(theme.palette.mode);
- // This will be true if the screen width is less than 600px
  const isSmallScreen = useMediaQuery('(max-width:600px)');
 
   const { searchInput } = useContext(SearchContext); // Get searchInput from context
@@ -62,16 +61,16 @@ const CoinSearch = () => {
             <Box 
             sx={{
                 gridColumn: {
-                xs: 'span 12', // On extra small (xs) screens, span 12 columns
-                sm: 'span 12',  // On small (sm) screens, span 6 columns
-                md: 'span 12',  // On medium (md) screens, span 4 columns
-                lg: 'span 12',  // On large (lg) screens, span 3 columns
+                xs: 'span 12', 
+                sm: 'span 12',  
+                md: 'span 12',  
+                lg: 'span 12',  
                 },
                 backgroundColor: colors.primary[400],
                 height: "75vh",
-                display: 'flex', // Add this
-                alignItems: 'center', // Add this
-                justifyContent: 'center', // Add this
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
                 borderRadius: 4,
                 width: "100%"
                 

@@ -34,7 +34,7 @@ const CryptoList = () => {
 
        
 
-    }, []); // Empty dependency array means this effect will only run once, when the component mounts
+    }, []); 
 
     return { cryptoData, isLoading };
 };
