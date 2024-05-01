@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 const CryptoList = () => {
     const [cryptoData, setCryptoData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const options = {
@@ -18,6 +20,7 @@ const CryptoList = () => {
                 .then(function (response) {
                     const dataWithIds = response.data.map((item, index) => ({ id: index, ...item }));
                     setCryptoData(dataWithIds);
+                    setIsLoading(false);
 
                 })
                 .catch(function (error) {
@@ -29,9 +32,11 @@ const CryptoList = () => {
 
         return () => clearInterval(intervalId); // Cleanup on unmount
 
+       
+
     }, []); // Empty dependency array means this effect will only run once, when the component mounts
 
-    return { cryptoData };
+    return { cryptoData, isLoading };
 };
 
 export default CryptoList;

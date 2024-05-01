@@ -81,7 +81,7 @@ const Sidebar = () => {
             
             position: isMobile ? 'fixed' : 'relative', // Add this line
             zIndex: isMobile ? 1000 : 'auto', // Add this line
-            height: isMobile ? '100%' : 'auto',
+            height: isMobile ? '100%' : '100vh',
            
             
             

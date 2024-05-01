@@ -2,13 +2,21 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Chart from 'react-apexcharts';
 import {useTheme} from '@mui/material';
-
+import { useMediaQuery } from '@mui/material';
 import { tokens } from "../theme";
 
 const CoinChart = ({ coinId }) => {
     const [data, setData] = useState([]);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isSmallScreen = useMediaQuery('(max-width:600px)');
+
+   
+
+     // Adjust legend and margin based on screen size
+     const legendWidth = window.innerWidth < 600 ? 50 : 80;
+   
+
 
     useEffect(() => {
         const options = {
@@ -31,7 +39,12 @@ const CoinChart = ({ coinId }) => {
 
     const options = {
         chart: {
-            type: 'line'
+            type: 'line',
+            width: "100%" , // Set width to 100% on small screens
+            height: isSmallScreen ? "200px" : "300px", // Adjust height on small screens
+            toolbar: {
+                offsetY: -10, // Add a 10px margin between the toolbar and the chart
+            }
         },
         stroke: {
             width: 2 // Adjust the thickness of the line here
@@ -57,12 +70,39 @@ const CoinChart = ({ coinId }) => {
             labels: {
                 style: {
                     colors: colors.greenAccent[500] // Change the color of the y-axis labels here
+                },
+                formatter: function (value) {
+                    return value.toFixed(2); // limit to two decimal places
                 }
             }
-        }
+            
+        },
+
+        responsive: [{
+            breakpoint: 600, // breakpoint at 600px
+            options: {
+                chart: {
+                    width: "100%", // set width to 100% on small screens
+                },
+                legend: {
+                    position: 'bottom', // move legend to bottom on small screens
+                    width: legendWidth,
+                },
+                grid: {
+                    xaxis: { lines: { show: false } }, // hide x-axis grid lines on small screens
+                    yaxis: { lines: { show: false } }, // hide y-axis grid lines on small screens
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false, // switch to vertical bars on small screens
+                    },
+                },
+            },
+        }]
+
     };
 
-    return <Chart options={options} series={options.series} type="line" />;
+    return <Chart options={options} series={options.series} type="line"  />;
 };
 
 export default CoinChart;

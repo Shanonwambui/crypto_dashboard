@@ -11,7 +11,9 @@ import Dashboard from './scenes/dashboard';
 import Form from './scenes/form';
 import { UserProvider } from "./UserContext";
 import CoinDetails from './data/CoinDetails';
-
+import FAQ from './scenes/faq';
+import SearchContext from './SearchContext';
+import CoinSearch from './data/CoinSearch';
 
 function App() {
 
@@ -19,10 +21,12 @@ function App() {
   const [isSidebar, setIsSidebar] = useState(true);
   const muiTheme = useTheme();
   const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down('sm'));
+  const [searchInput, setSearchInput] = useState('');
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
+        <SearchContext.Provider value={{searchInput, setSearchInput}}>
         <CssBaseline />
          <UserProvider>
           <div className="app">
@@ -33,6 +37,8 @@ function App() {
               <Route path="/" element={<Dashboard/>}/>
               <Route path="/form" element={<Form/>}/>
               <Route path="/coin/:id" element={<CoinDetails />} />
+              <Route path="/faq" element={<FAQ/>} />
+              <Route path="/search" element={<CoinSearch />} />
 
 
               </Routes>
@@ -42,6 +48,7 @@ function App() {
           </div>
          </UserProvider>
         
+          </SearchContext.Provider>
         
       </ThemeProvider>
       </ColorModeContext.Provider>
