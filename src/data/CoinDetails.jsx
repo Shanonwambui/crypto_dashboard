@@ -86,8 +86,8 @@ const CoinDetails = ({ match }) => {
                 }}
                 >
                     
-                    <Box  borderBottom="1px dashed grey" height="130px" >
-                        <Box p="10px" display={displayStatitics} alignItems="center" justifyContent="space-between" borderBottom={borderBottom}  height="60px">
+                    <Box  borderBottom="1px dashed grey" height={isSmallScreen ? "100px":"130px"} >
+                        <Box p="10px" paddingBottom={isSmallScreen ? "0px" : "auto"} display={displayStatitics} alignItems="center" justifyContent="space-between" borderBottom={borderBottom}  height={isSmallScreen ? "40px" : "60px"}>
                             <Typography variant={isSmallScreen ? 'h6' : 'h4'} color={colors.grey[400]} fontWeight="bold" paddingLeft={isSmallScreen ? "15px" : "auto"}>Crypto Statistics</Typography>
                             <Toolbar >
                                 <Button  style={{ backgroundColor: activeButton === '1D' ? `rgba(132, 90, 223, 1)` : `rgba(132, 90, 223, 0.1)`, borderRight: `1px solid ${colors.blueAccent[400]}`, color: activeButton === '1D' ? colors.grey[100] : colors.blueAccent[400] , borderTopRightRadius: 0, borderBottomRightRadius: 0}} classes={{ root: classes.root }}  onClick={() => setActiveButton('1D')}>1D</Button>
@@ -101,7 +101,7 @@ const CoinDetails = ({ match }) => {
                         </Box>
                         <Box display="flex"  height="70px">
                             <Box marginRight={isSmallScreen ? "0px" : "60px"}>
-                            <img src={coinData.image.large} alt={coinData.name} width={isSmallScreen ? "20px" : "30px" } style={{ margin: isSmallScreen ? "5px" : "20px", marginTop: isSmallScreen ? "20px" : "auto"}}/>
+                            <img src={coinData.image.large} alt={coinData.name} width={isSmallScreen ? "20px" : "30px" } style={{ margin: isSmallScreen ? "5px" : "20px", marginTop: isSmallScreen ? "20px" : "20px"}}/>
                             </Box>
                        
                         <Box margin="10px" marginBottom="10px" height="70px" marginRight={isSmallScreen ?  "5px":  "40px"}>
@@ -143,7 +143,7 @@ const CoinDetails = ({ match }) => {
                         padding: '20px',
                         width: isSmallScreen ? '110%' : '500px', // Adjust width to 100% on small screens
                         height: isSmallScreen ? '200px' : '300px', // Adjust height on small screens
-                        marginTop: isSmallScreen ? '70px' : 'auto', // Adjust margin on small screens
+                        marginTop: isSmallScreen ? '50px' : 'auto', // Adjust margin on small screens
                         marginLeft: isSmallScreen ? '-30px' : isMediumScreen ? '50px' : '100px' // Adjust margin on small screens
                     }} alignItems="center" justifyContent="center" >
                         <CoinChart coinId={coinData.id} />
@@ -199,14 +199,14 @@ const CoinDetails = ({ match }) => {
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">High (24h) </Typography>
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">{coinData.market_data.high_24h.usd} $</Typography>
                     </Box>
-                    <Box display="flex" justifyContent="space-between" borderBottom="1px dashed grey">
+                    <Box display="flex" justifyContent="space-between" borderBottom={isSmallScreen ? "none" : "1px dashed grey"}>
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">Low (24h) </Typography>
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">{coinData.market_data.low_24h.usd} $</Typography>
                     </Box>
-                    <Box display="flex" justifyContent="space-between" borderBottom={isSmallScreen ? "none" : "1px dashed grey"} >
+                    {!isSmallScreen && (<Box display="flex" justifyContent="space-between" borderBottom={isSmallScreen ? "none" : "1px dashed grey"} >
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">All Time High </Typography>
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">{coinData.market_data.ath.usd} $</Typography>
-                    </Box>
+                    </Box>)}
                    {!isSmallScreen && ( <Box display="flex" justifyContent="space-between">
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">All Time Low </Typography>
                         <Typography variant={isSmallScreen ? 'h6' : 'h5'} m="15px">{coinData.market_data.atl.usd} $</Typography>
