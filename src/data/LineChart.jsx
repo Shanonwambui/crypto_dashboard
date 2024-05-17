@@ -13,7 +13,6 @@ const LineChart = ({coinid, percentage}) => {
     const colors = tokens(theme.palette.mode);
     // Define media queries
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
  
   console.log(percentage);
