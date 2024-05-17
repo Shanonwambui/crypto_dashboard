@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
-import SearchContext from '../SearchContext';
+import React, {  useEffect,  } from 'react';
 import { Box } from '@mui/material';
 import CoinBar from './CoinBar';
 import ExchangeTable from './searchTables/ExchangeTable';
@@ -8,6 +6,9 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import {Typography} from '@mui/material';
 import { useMediaQuery } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCoinData, selectSearchInput } from '../redux/state/search/SearchSlice'; // replace with actual path
+
 
 
 const CoinSearch = () => {
@@ -15,36 +16,25 @@ const CoinSearch = () => {
  const colors = tokens(theme.palette.mode);
  const isSmallScreen = useMediaQuery('(max-width:600px)');
 
-  const { searchInput } = useContext(SearchContext); // Get searchInput from context
-  const [coinData, setCoinData] = useState(null);
+ const dispatch = useDispatch();
+ const searchInput = useSelector(selectSearchInput);
+ const coinData = useSelector(state => state.search.coinData);
+ 
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`https://api.coingecko.com/api/v3/search?query=${searchInput}`, {
-          headers: {
-            'accept': 'application/json',
-            'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB'
-          }
-        });
-        setCoinData(response.data);
-      } catch (error) {
-        console.error('Failed to fetch coin data: ', error);
-      }
-    };
-
     if (searchInput) {
-      fetchData();
+      dispatch(fetchCoinData(searchInput));
     }
-  }, [searchInput]); // Depend on searchInput
+  }, [dispatch, searchInput]);
 
   return (
-    <Box m="20px">
+    <Box p="20px" marginTop="60px" sx={{backgroundColor: colors.primary[400]}}>
         <Box m="20px" sx={{ flex: 0.7 }}>
         {coinData && (
             <>
             <Typography variant={isSmallScreen ? 'h3' : 'h1'} gutterBottom>
-                {coinData.coins[0].name} {/* Display the name of the coin */}
+            {coinData.coins[0].name} {/* Display the name of the coin */}
             </Typography>
            {/* Pass coinData to CoinBar */}
             </>
@@ -66,7 +56,7 @@ const CoinSearch = () => {
                 md: 'span 12',  
                 lg: 'span 12',  
                 },
-                backgroundColor: colors.primary[400],
+                backgroundColor: colors.primary[500],
                 height: "75vh",
                 display: 'flex', 
                 alignItems: 'center', 
@@ -104,12 +94,12 @@ const CoinSearch = () => {
                
               }}
             >
-                {coinData && coinData.exchanges.length > 0 && (
+                {coinData && coinData.exchanges && coinData.exchanges.length > 0 && (
                   <>
-                      <h2>Exchanges</h2>
-                      <ExchangeTable data={coinData.exchanges} />
+                    <h2>Exchanges</h2>
+                    <ExchangeTable data={coinData.exchanges} />
                   </>
-              )}
+                )}
             </Box>
 
         </Box>

@@ -12,13 +12,13 @@ const FAQ =() => {
     const colors = tokens(theme.palette.mode);
 
     return (
-        <Box m="20px"
+        <Box p="20px" sx={{backgroundColor: colors.primary[400]}} height="100vh" marginTop="60px"
         >
             <Header title="FAQ" subtitle="Frequently Asked Questions Page" />
 
-            <Accordion >
+            <Accordion  >
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.grey[100]} variant="h5">
                         What is a cryptocurrency exchange?
 
                     </Typography>
@@ -33,7 +33,7 @@ const FAQ =() => {
 
             <Accordion >
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.grey[100]} variant="h5">
                         How to track cryptocurrency prices
 
                     </Typography>
@@ -48,7 +48,7 @@ const FAQ =() => {
 
             <Accordion >
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.grey[100]} variant="h5">
                     What is a crypto wallet?
 
                     </Typography>
@@ -63,7 +63,7 @@ const FAQ =() => {
 
             <Accordion >
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.grey[100]} variant="h5">
                     What are the benefits of using cryptocurrency?
 
                     </Typography>
@@ -84,7 +84,7 @@ const FAQ =() => {
 
             <Accordion >
                 <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                    <Typography color={colors.greenAccent[500]} variant="h5">
+                    <Typography color={colors.grey[100]} variant="h5">
                     What are the risks of using cryptocurrency?
 
                     </Typography>

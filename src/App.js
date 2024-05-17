@@ -4,54 +4,74 @@ import {Routes, Route} from "react-router-dom";
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+
 import Topbar from './scenes/global/Topbar';
 import Sidebar from './scenes/global/Sidebar';
 import Dashboard from './scenes/dashboard';
 import Form from './scenes/form';
-import { UserProvider } from "./UserContext";
-import CoinDetails from './data/CoinDetails';
+import SignInForm from './scenes/form/sign-in';
+
 import FAQ from './scenes/faq';
-import SearchContext from './SearchContext';
 import CoinSearch from './data/CoinSearch';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import Calender from './scenes/calendar';
+import CryptoWallet from './scenes/cryptoWallet';
+import CoinInfo from './data/CoinInfo';
+
+import { tokens } from './theme';
 
 function App() {
+  
+  
 
   const [theme, colorMode] = useMode();
+  const colors = tokens(theme.palette.mode);
   const [isSidebar, setIsSidebar] = useState(true);
-  const muiTheme = useTheme();
-  const isSmallScreen = useMediaQuery(muiTheme.breakpoints.down('sm'));
-  const [searchInput, setSearchInput] = useState('');
+  const [isCollapsed, setIsCollapsed] = useState(false); 
+
+  // Define media queries
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+
+  const width = isSmallScreen ? '90%' : (isMediumScreen ? 'calc(100% - 50px)' : (isCollapsed ? 'calc(100% - 70px)' : 'calc(100% - 270px)'));
+
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <Provider store={store}>
+      <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <SearchContext.Provider value={{searchInput, setSearchInput}}>
+       
         <CssBaseline />
-         <UserProvider>
+
           <div className="app">
-          <Sidebar isSidebar={isSidebar}/>
-            <main className="content" style={{ marginLeft: isSmallScreen && isSidebar ? '50px' : '0' }}>
-              <Topbar setIsSidebar={setIsSidebar}/>
+          <Sidebar isSidebar={isSidebar} isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>
+            <main className="content" style={{ marginLeft: isSmallScreen && isSidebar ? '50px' : (isCollapsed ? '70px' : '270px'), width , borderLeft: `1px solid ${colors.grey[700]}`,}}>
+              <Topbar setIsSidebar={setIsSidebar} isCollapsed={isCollapsed}/>
               <Routes>
               <Route path="/" element={<Dashboard/>}/>
               <Route path="/form" element={<Form/>}/>
-              <Route path="/coin/:id" element={<CoinDetails />} />
+              <Route path="/coin/:id" element={<CoinInfo />} />
               <Route path="/faq" element={<FAQ/>} />
               <Route path="/search" element={<CoinSearch />} />
-
-
+              <Route path="/sign-in" element={<SignInForm />} />
+              <Route path="/calender" element={<Calender />} />
+              <Route path="/wallet" element={<CryptoWallet />} />
+              
               </Routes>
             </main>
             
 
           </div>
-         </UserProvider>
+       
         
-          </SearchContext.Provider>
+         
         
       </ThemeProvider>
       </ColorModeContext.Provider>
+
+    </Provider>
+    
   );
 }
 

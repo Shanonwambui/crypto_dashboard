@@ -9,16 +9,18 @@ body,
 
 .content {
   
-  width: 100%;
+  
   font-family: "Source Sans 3", sans-serif;
-  height: 100vh;
+
+  
+  
   
 
 }
 .app {
   display: flex;
-  height: 100%;
   position: relative;
+  height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -46,5 +48,6 @@ body,
 }
 
 .sidebar {
-  height: 100vh;
+  height: auto;
 }
+

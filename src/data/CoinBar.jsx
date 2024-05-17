@@ -11,6 +11,10 @@ const CoinBar = ({ data }) => {
     const isSmallScreen = useMediaQuery('(max-width:600px)');
     const legendWidth = window.innerWidth < 600 ? 50 : 80;
 
+
+    const xaxisCategories = data && data.coins ? data.coins.map(coin => coin.name) : [];
+    const seriesData = data && data.coins ? data.coins.map(coin => coin.market_cap_rank) : [];
+
   const options = {
     chart: {
       type: 'bar',
@@ -19,6 +23,8 @@ const CoinBar = ({ data }) => {
       },
       width: isSmallScreen ? "400px" : "500px", 
       height: isSmallScreen ? "300px" : "300px", 
+      
+     
     },
     title: {
       text: 'Coin Market Cap Rank',
@@ -34,20 +40,24 @@ const CoinBar = ({ data }) => {
     dataLabels: {
         enabled: false 
       },
+      fill: {
+        colors: [colors.blueAccent[400]]
+      },
+  
 
     xaxis: {
-      categories: data.coins.map(coin => coin.name),
+      categories: xaxisCategories,
       labels: {
         style: {
-            colors: colors.greenAccent[500] 
+            colors: colors.grey[400] 
         }
     }
     },
     yaxis: {
-        opposite: true,
+        opposite: false,
         labels: {
             style: {
-                colors: colors.greenAccent[500] 
+                colors: colors.grey[400] 
             }
         }
     },
@@ -70,6 +80,7 @@ const CoinBar = ({ data }) => {
           plotOptions: {
               bar: {
                   horizontal: false, 
+                  colors: [colors.blueAccent[400]],
               },
           },
       },
@@ -78,7 +89,7 @@ const CoinBar = ({ data }) => {
 
   const series = [{
     name: 'market cap rank',
-    data: data.coins.map(coin => coin.market_cap_rank)
+    data: seriesData
   }];
 
   return (

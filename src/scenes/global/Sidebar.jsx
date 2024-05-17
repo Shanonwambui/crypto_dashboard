@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useContext } from 'react';
-import { UserContext } from "../../UserContext";
+
+import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import {Box, IconButton, Typography, useTheme} from '@mui/material';
@@ -13,6 +13,8 @@ import HelpOutlinedIcon from "@mui/icons-material/HelpOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useSelector } from "react-redux";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 
 
 const Item = ({title, to, icon, selected, setSelected}) => {
@@ -35,23 +37,25 @@ const Item = ({title, to, icon, selected, setSelected}) => {
 };
 
 
-const Sidebar = () => {
+const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    
     const [selected, setSelected] = useState("Dashboard");
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    const { user } = useContext(UserContext);
+    
+    const user = useSelector(state => state.user.user);
 
     useEffect(() => {
         setIsCollapsed(isMobile);
-      }, [isMobile]);
+      }, [isMobile, setIsCollapsed]);
 
     return (
         <Box sx={{
             "& .pro-sidebar-inner": {
-                background: `${colors.primary[400]} !important`,
-                width: isCollapsed ? (isMobile ? '50px' : '80px') : 'auto',
+                background: `${colors.primary[500]} !important`,
+                width: isCollapsed ? (isMobile ? '50px' : '70px') : 'auto',
+                
                 
               },
             "& .pro-icon-wrapper": {
@@ -62,6 +66,7 @@ const Sidebar = () => {
                 
                 padding: isCollapsed ? (isMobile ?  "5px 35px 5px 10px !important" :"5px 35px 5px 20px !important" ): 'auto',
                 marginRight: isMobile && isMobile ? '10px' : '0', 
+            
             },
             "& .pro-inner-item:hover": {
                 color: "#868dfb !important"
@@ -70,8 +75,8 @@ const Sidebar = () => {
                 color: "#6870fa !important"
             },
             
-            position: isMobile ? 'fixed' : 'relative', 
-            zIndex: isMobile ? 1000 : 'auto', 
+            position: isMobile ? 'fixed' : 'fixed', 
+            zIndex: isMobile ? 1001 : 'auto', 
             height: isMobile ? '100%' : '100vh',
                    
 }}>
@@ -85,6 +90,8 @@ const Sidebar = () => {
                     style={{
                         margin: "5px 0 20px 0",
                         color: colors.grey[100],
+                        borderBottom: `1px solid ${colors.grey[700]}`,
+                        
                     }}
                     >
                         {!isCollapsed && (
@@ -120,7 +127,7 @@ const Sidebar = () => {
                                     </Typography>
                                 <Typography
                                  variant="h5"
-                                 color={colors.greenAccent[500]}
+                                 color={colors.greenAccent[400]}
                                  >Crypto Admin</Typography>
 
                             </Box>
@@ -145,9 +152,23 @@ const Sidebar = () => {
                             Pages
                         </Typography>
                         <Item 
+                            title="Wallet"
+                            to="/wallet"
+                            icon={<WalletOutlinedIcon/>}
+                            selected= {selected}
+                            setSelected={setSelected}
+                        />
+                        <Item 
                             title="Profile Form"
                             to="/form"
                             icon={<PersonOutlinedIcon/>}
+                            selected= {selected}
+                            setSelected={setSelected}
+                        />
+                        <Item 
+                            title="Calender"
+                            to="/calender"
+                            icon={<CalendarTodayOutlinedIcon/>}
                             selected= {selected}
                             setSelected={setSelected}
                         />

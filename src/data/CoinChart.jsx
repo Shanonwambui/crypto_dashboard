@@ -33,16 +33,20 @@ const CoinChart = ({ coinId }) => {
 
     const options = {
         chart: {
-            type: 'line',
+            type: 'area',
             width: "100%" ,
             height: isSmallScreen ? "200px" : "300px", 
             toolbar: {
-                offsetY: -10, 
-            }
+                show: false
+              },
         },
         stroke: {
-            width: 2 
+            width: 2,
+            colors: [colors.blueAccent[400]],
         },
+        grid: {
+            colors: colors.grey[400],
+          },
         tooltip: {
             fillSeriesColor: false,
             theme: 'dark' 
@@ -51,19 +55,44 @@ const CoinChart = ({ coinId }) => {
             name: 'Price',
             data: data
         }],
+        dataLabels: {
+            enabled: false
+          },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 1,
+                opacityTo: 0,
+                stops: [0, 100],
+                colorStops: [
+                    {
+                        offset: 0,
+                        color: '#845ADF',
+                        opacity: 1
+                    },
+                    {
+                        offset: 100,
+                        color: '#222631',
+                        opacity: 0
+                    }
+                ]
+            }
+        },
         xaxis: {
             type: 'datetime',
             labels: {
                 style: {
-                    colors: colors.greenAccent[500] 
+                    colors: colors.grey[400] 
                 }
             }
         },
         yaxis: {
-            opposite: true,
+            opposite: false,
             labels: {
                 style: {
-                    colors: colors.greenAccent[500] 
+                    colors: colors.grey[400] 
                 },
                 formatter: function (value) {
                     return value.toFixed(2); // limit to two decimal places
@@ -77,6 +106,7 @@ const CoinChart = ({ coinId }) => {
             options: {
                 chart: {
                     width: "100%",
+                    
                 },
                 legend: {
                     position: 'bottom', 
@@ -96,7 +126,7 @@ const CoinChart = ({ coinId }) => {
 
     };
 
-    return <Chart options={options} series={options.series} type="line"  />;
+    return <Chart options={options} series={options.series} type="area"  />;
 };
 
 export default CoinChart;

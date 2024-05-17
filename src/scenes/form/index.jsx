@@ -5,8 +5,11 @@ import {Formik} from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
-import { useContext } from "react";
-import { UserContext } from "../../UserContext";
+import { setUser } from "../../redux/state/user/UserSlice";
+import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
+import { useTheme } from "@mui/material";
+import { tokens } from "../../theme";
 
 const initialValues = {
     firstName: "",
@@ -33,20 +36,24 @@ const userSchema = yup.object().shape({
 
 const Form = () => {
     const isNonMobile =  useMediaQuery("(min-width: 600px)");
-    const { setUser } = useContext(UserContext);
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleFormSubmit = (values) => {
-        setUser(values);
+        dispatch(setUser(values)); // Dispatch the setUser action
         navigate('/'); // Redirect to dashboard page
     }
     return(
-    <Box m="20px">
+    <Box p="20px" sx={{backgroundColor: colors.primary[400]}} marginTop="60px" height="100vh">
         <Header title="CREATE USER" subtitle="Create a New User Profile "></Header>
+        <Box sx={{backgroundColor: colors.primary[500], borderRadius: 2}} p="20px">
         <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
         validationSchema={userSchema}
+        
         >
             {({
                 values,
@@ -61,8 +68,11 @@ const Form = () => {
                     display="grid" 
                     gap="30px" 
                     gridTemplateColumns="repeat(4,minmax(0,1fr))"
+                    
+                    borderRadius= "4px"
                     sx={{
                         "& > div": {gridColumn: isNonMobile ? undefined : "span 4" },
+                        backgroundColor: colors.primary[500],
                     }}
                     >
                         <TextField 
@@ -146,7 +156,10 @@ const Form = () => {
                         />
                     
                     </Box>
-                    <Box display="flex" justifyContent="end" mt="20px">
+                    <Box display="flex" justifyContent="space-between" mt="20px">
+                    <Link to="/Sign-in">
+                        <Button color="secondary">Sign in</Button>
+                    </Link>
                         <Button type="submit" color="secondary" variant="contained">
                             Create New User
                         </Button>
@@ -156,6 +169,9 @@ const Form = () => {
             )}
         </Formik>
 
+
+        </Box>
+        
     </Box>);
 };
 
