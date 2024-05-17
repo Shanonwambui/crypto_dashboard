@@ -19,6 +19,7 @@ export const fetchCoinDetails = createAsyncThunk(
         headers: {
           accept: "application/json",
           "x-cg-demo-api-key": "CG-WYyw7xXVmQkEA1X5WMXVWuyB",
+          'Access-Control-Allow-Origin':'*'
         },
       }
     );

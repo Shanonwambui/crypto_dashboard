@@ -8,7 +8,7 @@ export const fetchCryptoData = createAsyncThunk('crypto/fetchCryptoData', async 
         method: 'GET',
         url: 'https://api.coingecko.com/api/v3/coins/markets',
         params: {vs_currency: 'usd'},
-        headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB'}
+        headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB', 'Access-Control-Allow-Origin':'*'}
     };
     const response = await axios.request(options);
     const dataWithIds = response.data.map((item, index) => ({ id: index, ...item }));

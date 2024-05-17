@@ -13,7 +13,8 @@ export const fetchCoinData = createAsyncThunk('search/fetchCoinData', async (sea
     const response = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchInput}`, {
         headers: {
             'accept': 'application/json',
-            'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB'
+            'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB',
+            'Access-Control-Allow-Origin':'*'
 
         }
     });
