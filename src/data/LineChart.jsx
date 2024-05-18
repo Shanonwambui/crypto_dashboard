@@ -18,6 +18,7 @@ const LineChart = ({coinid, percentage}) => {
   console.log(percentage);
 
   useEffect(() => {
+    if(!coinid) return;
     const options = {
       method: 'GET',
       headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB'}
