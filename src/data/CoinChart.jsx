@@ -17,7 +17,7 @@ const CoinChart = ({ coinId }) => {
             method: 'GET',
             url: `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`,
             params: {vs_currency: 'usd', days: '180'},
-            headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB'}
+            headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB', }
         };
 
         axios.request(options).then(function (response) {

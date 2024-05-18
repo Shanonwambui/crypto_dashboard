@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const CoinDetails = ({ match }) => {
+const CoinDetails = () => {
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
