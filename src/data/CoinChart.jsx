@@ -13,6 +13,8 @@ const CoinChart = ({ coinId }) => {
     const legendWidth = window.innerWidth < 600 ? 50 : 80;
    
     useEffect(() => {
+        if(!coinId) return;
+
         const options = {
             method: 'GET',
             url: `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`,
