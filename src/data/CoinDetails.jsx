@@ -101,7 +101,7 @@ const CoinDetails = () => {
                         </Box>
                         <Box display="flex"  height="70px">
                             <Box marginRight={isSmallScreen ? "0px" : "60px"}>
-                            <img src={coinData.image.large} alt={coinData.name} width={isSmallScreen ? "20px" : "30px" } style={{ margin: isSmallScreen ? "5px" : "20px", marginTop: isSmallScreen ? "20px" : "20px"}}/>
+                            <img src={coinData.image.large} alt={coinData.name} width={isSmallScreen ? "20px" : "30px" } style={{ margin: isSmallScreen ? "5px 5px 20px" : "20px" }}/>
                             </Box>
                        
                         <Box margin="10px" marginBottom="10px" height="70px" marginRight={isSmallScreen ?  "5px":  "40px"}>

@@ -13,13 +13,15 @@ const CoinChart = ({ coinId }) => {
     const legendWidth = window.innerWidth < 600 ? 50 : 80;
    
     useEffect(() => {
-        if(!coinId) return;
+        
 
         const options = {
             method: 'GET',
             url: `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`,
             params: {vs_currency: 'usd', days: '180'},
-            headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB', }
+            headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB', },
+            mode: 'no-cors'
+            
         };
 
         axios.request(options).then(function (response) {
