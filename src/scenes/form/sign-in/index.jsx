@@ -12,6 +12,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../../../theme";
 
 
+
 const loginSchema = yup.object().shape({
     
     email: yup.string().email("invalid email").required("required"),
@@ -27,6 +28,7 @@ const SignInForm = () => {
     const colors = tokens(theme.palette.mode);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const handleFormSubmit = (values) => {
         dispatch(setUser(values)); // Dispatch the loginUser action
@@ -34,7 +36,7 @@ const SignInForm = () => {
     }
 
     return(
-    <Box p="20px" sx={{backgroundColor: colors.primary[400]}} marginTop="60px" height="100vh">
+    <Box p={isSmallScreen ? "10px" : "20px"} sx={{backgroundColor: colors.primary[400]}} marginTop="60px" height="100vh">
         <Header title="SIGN IN" subtitle="Sign in to your account"></Header>
         <Box sx={{backgroundColor: colors.primary[500], borderRadius: 2}} p="20px">
         <Formik

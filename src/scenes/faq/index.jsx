@@ -6,13 +6,15 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { tokens } from "../../theme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const FAQ =() => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
-        <Box p="20px" sx={{backgroundColor: colors.primary[400]}} height="100vh" marginTop="60px"
+        <Box p={isSmallScreen ? "10px" : "20px"} sx={{backgroundColor: colors.primary[400]}} height="100vh" marginTop="60px"
         >
             <Header title="FAQ" subtitle="Frequently Asked Questions Page" />
 

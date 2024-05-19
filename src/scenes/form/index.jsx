@@ -40,13 +40,14 @@ const Form = () => {
     const colors = tokens(theme.palette.mode);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const handleFormSubmit = (values) => {
         dispatch(setUser(values)); // Dispatch the setUser action
         navigate('/'); // Redirect to dashboard page
     }
     return(
-    <Box p="20px" sx={{backgroundColor: colors.primary[400]}} marginTop="60px" height="100vh">
+    <Box p={isSmallScreen ? "10px" : "20px"} sx={{backgroundColor: colors.primary[400]}} marginTop="60px" height="100vh">
         <Header title="CREATE USER" subtitle="Create a New User Profile "></Header>
         <Box sx={{backgroundColor: colors.primary[500], borderRadius: 2}} p="20px">
         <Formik

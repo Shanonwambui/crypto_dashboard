@@ -51,7 +51,7 @@ const Calender = () => {
         }
     };
     return (
-        <Box p="20px" sx={{backgroundColor: colors.primary[400]}} marginTop="60px">
+        <Box p={isSmallScreen ? "10px" : "20px"} sx={{backgroundColor: colors.primary[400]}} marginTop="60px">
             <Header title="CALENDAR" subtitle="Full Calendar Interactive Page" />
             <Box display="flex" justifyContent="space-between" flexDirection={isSmallScreen ? 'column' : 'row'} >
                 {/*CALENDAR SIDEBAR */}
