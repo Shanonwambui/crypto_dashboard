@@ -17,7 +17,7 @@ const CoinChart = ({ coinId }) => {
 
         const options = {
             method: 'GET',
-            url: `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`,
+            url: `http://localhost:3001/coins/${coinId}/market_chart`,
             params: {vs_currency: 'usd', days: '180'},
             headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB', },
             mode: 'no-cors'
