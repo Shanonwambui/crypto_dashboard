@@ -5,6 +5,11 @@ import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+
+
 import Topbar from './scenes/global/Topbar';
 import Sidebar from './scenes/global/Sidebar';
 import Dashboard from './scenes/dashboard';
@@ -23,7 +28,7 @@ import { tokens } from './theme';
 
 function App() {
   
-  
+  const { pathname } = useLocation();
 
   const [theme, colorMode] = useMode();
   const colors = tokens(theme.palette.mode);
@@ -36,6 +41,10 @@ function App() {
 
   const width = isSmallScreen ? '90%' : (isMediumScreen ? 'calc(100% - 50px)' : (isCollapsed ? 'calc(100% - 70px)' : 'calc(100% - 270px)'));
 
+
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <Provider store={store}>
