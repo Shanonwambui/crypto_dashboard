@@ -13,11 +13,14 @@ const CoinChart = ({ coinId }) => {
     const legendWidth = window.innerWidth < 600 ? 50 : 80;
    
     useEffect(() => {
+
+        const serverUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://crypto-dashboard-tvay.onrender.com';
+
         
 
         const options = {
             method: 'GET',
-            url: `http://localhost:3001/coins/${coinId}/market_chart`,
+            url: `${serverUrl}/coins/${coinId}/market_chart`,
             params: {vs_currency: 'usd', days: '180'},
             headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-WYyw7xXVmQkEA1X5WMXVWuyB', },
             mode: 'no-cors'
