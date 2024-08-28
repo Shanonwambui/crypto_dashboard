@@ -1,10 +1,10 @@
 # CRYPTO DASHBOARD
 
-This dashboard shows a list of cryptocurrencies.
+This dashboard shows graphical presentation of various cryptocurrencies.
 
 ![crypto_dashboard](public/assets/crypto_dashboard.png)
 
-From the list of cryptocurrencies, a user can select a coin to get more details on the coin.
+THe dashboard has a  list of cryptocurrencies, a user can select a coin to get more details on the coin.
 
 ![crypto_dashboard](public/assets/crypto_details.png)
 
